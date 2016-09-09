@@ -3,6 +3,6 @@ Example: a register with taps at positions 11, 10, 7, 3 will have a feedback pol
 
 x^11 + x^10 + x^7 + x^3 + 1
 
-The one corresponds to the leaving bit that also takes part in the XOR.
+The one corresponds to the leaving bit.
 In order to maximize the length of the LFSR, i.e. for it to have the longest period (the number of steps before it returns to inital state), the polynomial should be primitive. That means, that there should be an even number of taps, and they should all be relatively prime, i.e. have no common divisor other than 1. Read more at [Wolfram MathWorld](http://mathworld.wolfram.com/PrimitivePolynomial.html)
 This code is an emulator, meaning that it does not operate on actual bits, but on a Python list of 0s and 1s symbolizing the bits. This allows for clearer presentation. The code contains the main LFSR class, as well as a short demonstration of the functionality. The project was inspired by [this assignment](http://www.cs.princeton.edu/courses/archive/spr15/cos126/assignments/lfsr.html) from the Princeton COS 126 course. Additional information was obtained from Wolfram MathWorld and Wikipedia.
