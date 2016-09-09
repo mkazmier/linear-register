@@ -4,14 +4,21 @@ from functools import reduce
 from operator import xor
 
 class LFSR():
-   '''An implementation of standard linear-feedback shift register. fill is the initial state as a list of 0s and 1s and taps correspond to indices in the binary number represented by the register. Bits on taps influence the next state. Note that taps are indices in binary notation, i.e. read from right to left. Example: taps = [3] on a nine-bit register is located on (9-1)-3 = 5th position in the array. '''
+   '''An implementation of standard linear-feedback shift register. 
+      fill is the initial state as a list of 0s and 1s 
+      and taps correspond to indices in the binary number represented by the register.
+      Bits on taps influence the next state. Note that taps are indices in binary notation,
+      i.e. read from right to left. Example: taps = [3] on a nine-bit register 
+      is located on (9-1)-3 = 5th position in the array. '''
 
    def __init__(self, fill, taps):
       self.register = fill
       self.taps = taps
 
    def step(self):
-      '''Advance the register by one step. All bits are shifted left by 1 and new bit is appended to the right tail. The new bit is a result of xor of the leaving (leftmost) bit and bits located at taps before the shift.'''
+      '''Advance the register by one step. All bits are shifted left by 1 and new bit 
+      is appended to the right tail. The new bit is a result of xor of the leaving (leftmost) bit
+      and bits located at taps before the shift.'''
       new_bit = reduce(xor, [self.register[(len(self.register)-1)-t] for t in self.taps]) # binary number, read from right to left
       del self.register[0]
       self.register.append(new_bit)
